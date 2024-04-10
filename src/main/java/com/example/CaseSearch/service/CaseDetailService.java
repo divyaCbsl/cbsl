@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.Year;
+import java.util.List;
 
 @Service
 public class CaseDetailService {
@@ -22,5 +23,9 @@ public class CaseDetailService {
 
     public void updateCaseFileDetail(CaseDetails casedetails) {
 
+    }
+
+    public List<CaseDetails> getAllCaseFiles() {
+        return caseDetailRepo.findAll();
     }
 }

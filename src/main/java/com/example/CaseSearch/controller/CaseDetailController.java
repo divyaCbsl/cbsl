@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Year;
+import java.util.List;
 
 @RestController
 @RequestMapping("caseSearch")
@@ -22,6 +23,10 @@ public class CaseDetailController {
     @GetMapping
     public CaseDetails getCaseFileDetails(@RequestParam String caseNumber,@RequestParam String caseType, @RequestParam Year caseYear) {
         return caseDetailService.getCaseFileDetails(caseNumber,caseType,caseYear);
+    }
+    @GetMapping("allCases")
+    public List<CaseDetails> getAllCaseFiles() {
+        return caseDetailService.getAllCaseFiles();
     }
 
     @PutMapping("/{caseNumber}")
