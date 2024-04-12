@@ -3,6 +3,8 @@ package com.example.CaseSearch.controller;
 import com.example.CaseSearch.model.CaseDetails;
 import com.example.CaseSearch.service.CaseDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Year;
@@ -31,6 +33,12 @@ public class CaseDetailController {
     public List<CaseDetails> getAllCaseFiles() {
         return caseDetailService.getAllCaseFiles();
     }
+
+    @GetMapping("/{caseNumber}")
+    public ResponseEntity<CaseDetails> getSingleFile(@PathVariable String caseNumber){
+        return caseDetailService.getSingleCaseDetail(caseNumber);
+    }
+
 
     @PutMapping("/{caseNumber}")
     public void updateCaseDetail(@PathVariable String caseNumber, @RequestBody CaseDetails casedetails ) {
