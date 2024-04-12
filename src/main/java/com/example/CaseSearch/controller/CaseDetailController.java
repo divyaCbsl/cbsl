@@ -9,7 +9,7 @@ import java.time.Year;
 import java.util.List;
 
 @RestController
-@RequestMapping("caseSearch")
+@RequestMapping("/caseSearch")
 public class CaseDetailController {
 
     @Autowired
@@ -20,11 +20,14 @@ public class CaseDetailController {
         caseDetailService.addCaseFileDetails(caseDetails);
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping
     public CaseDetails getCaseFileDetails(@RequestParam String caseNumber,@RequestParam String caseType, @RequestParam Year caseYear) {
         return caseDetailService.getCaseFileDetails(caseNumber,caseType,caseYear);
     }
-    @GetMapping("allCases")
+
+    @CrossOrigin(origins = "http://localhost:3000")
+    @GetMapping("/allCases")
     public List<CaseDetails> getAllCaseFiles() {
         return caseDetailService.getAllCaseFiles();
     }
